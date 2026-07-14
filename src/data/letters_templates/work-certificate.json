@@ -1,0 +1,135 @@
+{
+  "id": "letter-work-certificate",
+  "name": "Surat Keterangan Kerja Aktif",
+  "category": "work_certificate",
+  "body_template_id": "body-work-certificate",
+  "has_cover_page": false,
+  "status": "active",
+  "page_settings": {
+    "width": 210,
+    "height": 297,
+    "margins": { "top": 25, "right": 20, "bottom": 25, "left": 20 },
+    "orientation": "portrait",
+    "background_color": "#FFFFFF"
+  },
+  "elements": [
+    {
+      "id": "letterhead-logo",
+      "type": "image",
+      "x": 20,
+      "y": 25,
+      "z_index": 1,
+      "visible": true,
+      "name": "Logo Kop Surat",
+      "source": { "type": "static", "url": "/assets/logo/logo_akman.png" },
+      "width": 28,
+      "height": 28,
+      "fit": "contain"
+    },
+    {
+      "id": "letterhead-company",
+      "type": "text",
+      "x": 55,
+      "y": 25,
+      "z_index": 1,
+      "visible": true,
+      "name": "Nama Perusahaan",
+      "content": { "type": "static", "value": "PT AGSYA KARYA MANCA" },
+      "max_width": 140,
+      "style": {
+        "font_family": "Times New Roman",
+        "font_size": 14,
+        "font_weight": "bold",
+        "text_align": "center",
+        "color": "#000000"
+      }
+    },
+    {
+      "id": "letterhead-divider",
+      "type": "line",
+      "x": 20,
+      "y": 58,
+      "z_index": 1,
+      "visible": true,
+      "name": "Garis Kop Surat",
+      "direction": "horizontal",
+      "length": 170,
+      "thickness": 2,
+      "color": "#1e40af"
+    },
+    {
+      "id": "doc-title",
+      "type": "text",
+      "x": 20,
+      "y": 65,
+      "z_index": 1,
+      "visible": true,
+      "name": "Judul Surat",
+      "content": { "type": "static", "value": "SURAT KETERANGAN KERJA" },
+      "max_width": 170,
+      "style": {
+        "font_family": "Times New Roman",
+        "font_size": 13,
+        "font_weight": "bold",
+        "text_align": "center",
+        "color": "#000000",
+        "text_decoration": "underline"
+      }
+    },
+    {
+      "id": "doc-number",
+      "type": "text",
+      "x": 20,
+      "y": 73,
+      "z_index": 1,
+      "visible": true,
+      "name": "Nomor Surat",
+      "content": { "type": "dynamic", "binding_key": "letter_number", "default_value": "Nomor: SKK-2026-001" },
+      "max_width": 170,
+      "style": {
+        "font_family": "Times New Roman",
+        "font_size": 11,
+        "text_align": "center",
+        "color": "#333333"
+      }
+    },
+    {
+      "id": "signature",
+      "type": "signature",
+      "x": 30,
+      "y": 220,
+      "z_index": 1,
+      "visible": true,
+      "name": "Tanda Tangan",
+      "signature_type": "wet",
+      "label": "Pihak Pertama",
+      "name": "Direktur Utama",
+      "title": "PT Agsya Karya Manca",
+      "width": 60,
+      "height": 40
+    }
+  ],
+  "bindings": [
+    { "key": "letter_number", "label": "Nomor Surat", "source": "letter", "value_type": "string", "required": true, "example_value": "SKK-2026-001" },
+    { "key": "staff_name", "label": "Nama Karyawan", "source": "staff", "value_type": "string", "required": true, "path": "profile.full_name", "example_value": "John Doe" },
+    { "key": "position", "label": "Jabatan", "source": "staff", "value_type": "string", "path": "profile.position", "example_value": "Staff IT" },
+    { "key": "department", "label": "Departemen", "source": "staff", "value_type": "string", "path": "profile.department", "example_value": "IT Department" },
+    { "key": "company_address", "label": "Alamat Perusahaan", "source": "company", "value_type": "string", "example_value": "Jl. Contoh No. 123, Semarang" },
+    { "key": "start_date", "label": "Tanggal Mulai Bekerja", "source": "letter", "value_type": "date", "date_format": "DD MMMM YYYY", "example_value": "01 Januari 2020" },
+    { "key": "purpose", "label": "Keperluan Surat", "source": "letter", "value_type": "string", "example_value": "Syarat pengajuan finansial" },
+    { "key": "status", "label": "Status", "source": "letter", "value_type": "string", "example_value": "ACTIVE" },
+    { "key": "created_at", "label": "Tanggal Dibuat", "source": "letter", "value_type": "date", "date_format": "DD MMMM YYYY", "example_value": "17 Juni 2026" }
+  ],
+  "default_bindings": [
+    { "key": "company_address", "value": "Jl. Contoh No. 123, Semarang" },
+    { "key": "status", "value": "DRAFT" }
+  ],
+  "metadata": {
+    "created_by": "system",
+    "creator_name": "System",
+    "created_at": "2026-01-01T00:00:00Z",
+    "updated_at": "2026-06-17T00:00:00Z",
+    "version": 1,
+    "description": "Template surat keterangan kerja aktif untuk karyawan"
+  }
+}

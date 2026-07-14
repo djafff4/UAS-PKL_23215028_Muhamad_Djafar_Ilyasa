@@ -1,0 +1,18 @@
+# AKMAN ACADEMY - Robots.txt
+# Purpose: Allow Google to index landing page, block dashboard/auth routes
+
+User-agent: *
+Allow: /
+
+# Block private routes
+Disallow: /dashboard
+Disallow: /akademik
+Disallow: /finance
+Disallow: /landing
+Disallow: /login
+Disallow: /register
+Disallow: /error
+Disallow: /*?*
+
+# Sitemap location
+Sitemap: https://akman.id/sitemap.xml
