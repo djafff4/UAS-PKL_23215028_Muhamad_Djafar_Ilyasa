@@ -93,6 +93,36 @@
 
         <!-- Login Form -->
         <form @submit.prevent="handleLogin" class="space-y-5 sm:space-y-6">
+          <!-- Demo Account Quick Login -->
+          <div class="space-y-2.5">
+            <label class="block text-[10px] sm:text-xs font-bold text-surface-500 dark:text-surface-400 uppercase tracking-widest ml-1">Akun Demo</label>
+            <div class="grid grid-cols-2 gap-2.5">
+              <button
+                v-for="account in demoAccounts"
+                :key="account.email"
+                type="button"
+                @click="fillDemoAccount(account)"
+                class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl border-2 transition-all text-left group"
+                :class="selectedAccount === account.email 
+                  ? 'border-primary-500 bg-primary-50 dark:bg-primary-950/30' 
+                  : 'border-surface-200 hover:border-primary-300 hover:bg-surface-50 dark:hover:bg-surface-800'"
+              >
+                <div class="h-8 w-8 rounded-lg flex items-center justify-center shrink-0" :class="account.bgClass">
+                  <User :size="16" :class="account.iconClass" />
+                </div>
+                <div class="min-w-0">
+                  <p class="text-[10px] sm:text-xs font-bold text-surface-700 dark:text-surface-200 truncate">{{ account.name }}</p>
+                  <p class="text-[8px] sm:text-[9px] text-surface-400 truncate">{{ account.email }}</p>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Divider -->
+          <div class="relative py-1">
+            <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-surface-200"></div></div>
+            <span class="relative bg-white dark:bg-surface-950 px-4 text-[9px] sm:text-[10px] font-bold tracking-widest text-surface-400">Atau masuk manual</span>
+          </div>
           <!-- Email -->
           <div class="space-y-1.5">
             <label for="email" class="block text-[10px] sm:text-xs font-bold text-surface-500 dark:text-surface-400 uppercase tracking-widest ml-1">Email Perusahaan</label>
@@ -189,12 +219,6 @@
             </div>
           </Transition>
 
-          <!-- Divider -->
-          <div class="relative py-2">
-            <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-surface-200"></div></div>
-            <span class="relative bg-white dark:bg-surface-950 px-4 text-[9px] sm:text-[10px] font-bold tracking-widest text-surface-400">Atau masuk dengan</span>
-          </div>
-
           <!-- Google SSO -->
           <button
             type="button"
@@ -228,7 +252,7 @@ import logo from '@/assets/img/logo.jpeg'
 import {
   Loader2, ArrowLeft, ArrowRight, Eye, EyeOff,
   Mail, Lock, AlertCircle, Check,
-  ShieldCheck, LockKeyhole, Zap
+  ShieldCheck, LockKeyhole, Zap, User
 } from 'lucide-vue-next'
 
 const router = useRouter()
@@ -240,6 +264,24 @@ const showPassword = ref(false)
 const emailError = ref('')
 const passwordError = ref('')
 const authError = ref('')
+const selectedAccount = ref('')
+
+const demoAccounts = [
+  { 
+    name: 'Djafar', 
+    email: 'djafar@akman.id', 
+    password: 'password123',
+    bgClass: 'bg-blue-100 dark:bg-blue-900/30',
+    iconClass: 'text-blue-600 dark:text-blue-400'
+  },
+  { 
+    name: 'Affif', 
+    email: 'affif@akman.id', 
+    password: 'password123',
+    bgClass: 'bg-primary-100 dark:bg-primary-900/30',
+    iconClass: 'text-primary-600 dark:text-primary-400'
+  }
+]
 
 const form = reactive({
   email: '',
@@ -283,6 +325,15 @@ function validateEmail(): boolean {
   }
   emailError.value = ''
   return true
+}
+
+function fillDemoAccount(account: typeof demoAccounts[0]) {
+  form.email = account.email
+  form.password = account.password
+  selectedAccount.value = account.email
+  emailError.value = ''
+  passwordError.value = ''
+  authError.value = ''
 }
 
 async function handleLogin() {
