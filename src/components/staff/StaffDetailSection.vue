@@ -111,10 +111,6 @@
             <span class="font-medium text-surface-900 dark:text-surface-100 text-xs">{{ detail.akman_id }}</span>
           </div>
           <div class="flex justify-between">
-            <span class="text-surface-500">Atasan</span>
-            <span class="font-medium text-surface-900 dark:text-surface-100">{{ managerName || '-' }}</span>
-          </div>
-          <div class="flex justify-between">
             <span class="text-surface-500">Dibuat</span>
             <span class="font-medium text-surface-900 dark:text-surface-100">{{ formatDate(detail.created_at) }}</span>
           </div>

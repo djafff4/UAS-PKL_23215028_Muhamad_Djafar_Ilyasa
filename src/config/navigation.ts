@@ -44,25 +44,11 @@ export function getNavConfig(_auth: any): NavConfig {
       { label: 'Task Management', to: '/tasks', icon: CheckSquare },
       { label: 'Keuangan', to: '/keuangan', icon: Wallet },
       { label: 'Meeting', to: '/meetings', icon: CalendarDays },
+      { label: 'Staff Management', to: '/workspace/staff', icon: Users, condition: (a) => a.canManageStaff },
     ],
 
     // Grouped by domain
     sections: [
-      {
-        label: 'Workspace',
-        items: [
-          {
-            type: 'group',
-            label: 'Staff',
-            icon: Users,
-            condition: (a) => a.canManageStaff,
-            defaultExpanded: false,
-            children: [
-              { label: 'Staff Management', to: '/workspace/staff', icon: Users },
-            ],
-          },
-        ],
-      },
       {
         label: 'Akun',
         items: [
