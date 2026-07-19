@@ -25,8 +25,8 @@
 
 | | |
 |---|---|
-| **Nama** | Muhammad Affif |
-| **NIM** | 24225046 |
+| **Nama** | Muhamad Djafar Ilyasa |
+| **NIM** | 23215028 |
 | **Tempat PKL** | PT AGSYA KARYA MANCA (Akman) |
 | **Periode** | 2026 |
 
@@ -308,7 +308,7 @@ Hanya untuk penggunaan internal PT AGSYA KARYA MANCA.
 
 <div align="center">
 
-**Dibuat oleh**: Muhammad Affif (24225046)
+**Dibuat oleh**: Muhamad Djafar Ilyasa (23215028)
 
 **Periode PKL**: 2026
 
